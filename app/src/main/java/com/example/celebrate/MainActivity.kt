@@ -1,5 +1,6 @@
 package com.example.celebrate
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.collections.ArrayDeque
 
@@ -31,8 +33,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var spinnerFontText: Spinner
     private lateinit var spinnerColorText: Spinner
     private lateinit var spinnerSizeText: Spinner
-    private lateinit var inputListView:RecyclerView
-    private lateinit var inputAdapter: InputAdapter
     private val textStack = ArrayDeque<String>()
     private var currentTextIndex = -1
     private var isMovingTextView = false
@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         findIdOfElements()
         setEventsHandle()
         setupSpinners()
-        setUpRecyclerView()
         moveResultTextView()
     }
 
@@ -63,7 +62,6 @@ class MainActivity : AppCompatActivity() {
         spinnerFontText = findViewById(R.id.spinnerFontText)
         spinnerColorText = findViewById(R.id.spinnerColorText)
         spinnerSizeText = findViewById(R.id.spinnerSizeText)
-        inputListView=findViewById(R.id.inputListView)
     }
 
     private fun setEventsHandle() {
@@ -79,7 +77,6 @@ class MainActivity : AppCompatActivity() {
                 redoButton.isEnabled = false
                 currentTextIndex = textStack.size - 1
             }
-            inputListView.visibility=View.VISIBLE
         }
 
         undoButton.setOnClickListener {
@@ -105,6 +102,7 @@ class MainActivity : AppCompatActivity() {
                 val fontArray = resources.getStringArray(R.array.font_array)
                 val selectedFont = fontArray[position]
                 when (selectedFont) {
+                    "Choose Your Font Accordingly",
                     "Arial" -> resultTextView.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
                     "Times New Roman" -> resultTextView.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
                     "Verdana" -> resultTextView.typeface = Typeface.create(Typeface.SERIF, Typeface.ITALIC)
@@ -143,7 +141,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Handle nothing selected if needed
+                resultTextView.typeface = Typeface.create(Typeface.MONOSPACE, Typeface.BOLD)
             }
         }
 
@@ -152,6 +150,7 @@ class MainActivity : AppCompatActivity() {
                 val colorArray = resources.getStringArray(R.array.color_array)
                 val selectedColor = colorArray[position]
                 when (selectedColor) {
+                    "Choose Your Color Accordingly",
                     "Red" -> resultTextView.setTextColor(Color.RED)
                     "Blue" -> resultTextView.setTextColor(Color.BLUE)
                     "Green" -> resultTextView.setTextColor(Color.GREEN)
@@ -209,7 +208,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
+                   resultTextView.setTextColor(Color.BLACK)
             }
         }
 
@@ -221,17 +220,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Handle nothing selected if needed
+                resultTextView.textSize = 7f
             }
         }
 
+
         resultTextView.setOnClickListener {
-            // Hide other components
-            linearLayout.visibility = View.GONE
-            undoButton.visibility = View.GONE
-            redoButton.visibility = View.GONE
-            spinnersLinearLayout.visibility = View.VISIBLE
-        }
+           linearLayout.visibility = View.GONE
+           undoButton.visibility = View.GONE
+           redoButton.visibility = View.GONE
+           spinnersLinearLayout.visibility = View.VISIBLE
+       }
 
     }
     private fun setupSpinners() {
@@ -260,36 +259,8 @@ class MainActivity : AppCompatActivity() {
         spinnerSizeText.adapter = sizeAdapter
 
     }
-    private fun setUpRecyclerView() {
-        inputAdapter = InputAdapter()
-        inputListView.layoutManager = GridLayoutManager(this,2)
-        inputListView.adapter = inputAdapter
-    }
 
-    private inner class InputAdapter : RecyclerView.Adapter<InputViewHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InputViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false)
-            return InputViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: InputViewHolder, position: Int) {
-            val text = textStack.elementAt(position)
-            holder.bind(text)
-        }
-
-        override fun getItemCount(): Int {
-            return textStack.size
-        }
-    }
-
-    private inner class InputViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.itemTextView)
-
-        fun bind(text: String) {
-            textView.text = text
-        }
-    }
-
+    @SuppressLint("ClickableViewAccessibility")
     private fun moveResultTextView() {
         resultTextView.setOnLongClickListener {
             isMovingTextView = true
