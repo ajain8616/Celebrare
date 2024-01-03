@@ -226,9 +226,6 @@ class MainActivity : AppCompatActivity() {
 
 
         resultTextView.setOnClickListener {
-           linearLayout.visibility = View.GONE
-           undoButton.visibility = View.GONE
-           redoButton.visibility = View.GONE
            spinnersLinearLayout.visibility = View.VISIBLE
        }
 
