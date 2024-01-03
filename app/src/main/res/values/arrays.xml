@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="font_array">
+        <item>Arial</item>
+        <item>Times New Roman</item>
+        <item>Verdana</item>
+        <item>Adobe Jenson</item>
+        <item>Baskerville</item>
+        <item>Bodoni</item>
+        <item>Caslon</item>
+        <item>Didot</item>
+        <item>Garamond</item>
+        <item>Georgia</item>
+        <item>Palatino</item>
+        <item>Times New Roman</item>
+        <item>Trajan</item>
+        <item>Arial</item>
+        <item>Avant Garde Gothic</item>
+        <item>Calibri</item>
+        <item>Century Gothic</item>
+        <item>Comic Sans</item>
+        <item>Franklin Gothic</item>
+        <item>Futura</item>
+        <item>Gill Sans</item>
+        <item>Helvetica</item>
+        <item>Roboto</item>
+        <item>Brush Script</item>
+        <item>Edwardian Script</item>
+        <item>Freestyle Script</item>
+        <item>Lucida Calligraphy</item>
+        <item>Mistral</item>
+        <item>Segoe Script</item>
+        <item>Vivaldi</item>
+        <item>Zapfino</item>
+        <item>Marlett</item>
+        <item>Symbol</item>
+        <item>Webdings</item>
+        <item>Wingdings</item>
+        <item>Zapf Dingbats</item>
+    </string-array>
+
+    <string-array name="color_array">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Brown</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Gray</item>
+        <item>Silver</item>
+        <item>Gold</item>
+        <item>Copper</item>
+        <item>Bronze</item>
+        <item>Magenta</item>
+        <item>Cyan</item>
+        <item>Turquoise</item>
+        <item>Navy</item>
+        <item>Maroon</item>
+        <item>Olive</item>
+        <item>Teal</item>
+        <item>Indigo</item>
+        <item>Violet</item>
+        <item>Lavender</item>
+        <item>Fuchsia</item>
+        <item>Crimson</item>
+        <item>Scarlet</item>
+        <item>Vermilion</item>
+        <item>Saffron</item>
+        <item>Amber</item>
+        <item>Topaz</item>
+        <item>Emerald</item>
+        <item>Sapphire</item>
+        <item>Ruby</item>
+        <item>Amethyst</item>
+        <item>Jade</item>
+        <item>Onyx</item>
+        <item>Opal</item>
+        <item>Pearl</item>
+        <item>Ivory</item>
+        <item>Eggshell</item>
+        <item>Cream</item>
+        <item>Beige</item>
+        <item>Khaki</item>
+        <item>Tan</item>
+        <item>Rust</item>
+        <item>Terracotta</item>
+        <item>Salmon</item>
+        <item>Peach</item>
+        <item>Apricot</item>
+        <item>Mango</item>
+        <item>Papaya</item>
+    </string-array>
+    <string-array name="size_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>12</item>
+        <item>16</item>
+        <item>20</item>
+        <item>24</item>
+        <item>28</item>
+        <item>32</item>
+        <item>36</item>
+        <item>40</item>
+        <item>44</item>
+        <item>48</item>
+        <item>52</item>
+        <item>56</item>
+        <item>60</item>
+        <item>64</item>
+        <item>68</item>
+        <item>72</item>
+        <item>76</item>
+        <item>80</item>
+        <item>84</item>
+        <item>88</item>
+        <item>92</item>
+        <item>96</item>
+        <item>100</item>
+    </string-array>
+</resources>
+
