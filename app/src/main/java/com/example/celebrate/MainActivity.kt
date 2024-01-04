@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
     private var initialY = 0f
     private var initialTouchX = 0f
     private var initialTouchY = 0f
+    private val colorStack: MutableList<Int> = mutableListOf()
+    private val sizeStack: MutableList<Float> = mutableListOf()
+    private val fontStack: MutableList<Typeface> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +88,8 @@ class MainActivity : AppCompatActivity() {
                 resultTextView.text = textStack[currentTextIndex]
                 undoButton.isEnabled = currentTextIndex != 0
                 redoButton.isEnabled = true
+                // Update the color, size, and font based on the previous selection
+                updateTextViewPropertiesFromStack(currentTextIndex)
             }
         }
 
@@ -94,8 +99,11 @@ class MainActivity : AppCompatActivity() {
                 resultTextView.text = textStack[currentTextIndex]
                 redoButton.isEnabled = currentTextIndex != textStack.size - 1
                 undoButton.isEnabled = true
+                // Update the color, size, and font based on the next selection
+                updateTextViewPropertiesFromStack(currentTextIndex)
             }
         }
+
 
         spinnerFontText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -289,6 +297,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun updateTextViewPropertiesFromStack(index: Int) {
+        // Update the color
+        val selectedColor = colorStack[index]
+        resultTextView.setTextColor(selectedColor)
+
+        // Update the size
+        val selectedSize = sizeStack[index]
+        resultTextView.textSize = selectedSize
+
+        // Update the font
+        val selectedFont = fontStack[index]
+        resultTextView.typeface = Typeface.create(selectedFont, Typeface.NORMAL)
+    }
+
 
 }
 
